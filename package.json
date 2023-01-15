@@ -7,11 +7,20 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint \"**/*.{js,ts,tsx}\""
   },
   "dependencies": {
+    "@react-native-masked-view/masked-view": "^0.2.8",
+    "@react-navigation/native": "^6.1.2",
+    "@react-navigation/stack": "^6.3.11",
+    "axios": "^1.2.2",
     "react": "18.1.0",
-    "react-native": "0.70.6"
+    "react-native": "0.70.6",
+    "react-native-gesture-handler": "^2.9.0",
+    "react-native-safe-area-context": "^4.4.1",
+    "react-native-screens": "^3.18.2",
+    "react-native-vision-camera": "^2.15.2",
+    "vision-camera-code-scanner": "^0.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -41,5 +50,27 @@
       "json",
       "node"
     ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@react-native-community",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "jsxBracketSameLine": true,
+          "singleQuote": true,
+          "trailingComma": "es5",
+          "tabWidth": 2,
+          "semi": true,
+          "bracketSpacing": true,
+          "printWidth": 88,
+          "endOfLine": "auto",
+          "arrowParens": "always"
+        }
+      ]
+    }
   }
 }
