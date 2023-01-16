@@ -19,7 +19,8 @@ export const ProductProvider = ({ children }: any) => {
 
   const loadProducts = async () => {
     const resp = await clientAPI.get<ProductsResponse>(
-      '/api/v2/search?categories_tags_en=chocolates&labels_tags_en=organic,fair%20trade&fields=code,product_name'
+      '/api/search?categories_tags_en=chocolates&labels_tags_en=organic,fair%20trade&fields=code,product_name'
+      // '/api/v2/search?categories_tags_en=chocolates&labels_tags_en=organic,fair%20trade&fields=code,product_name'
     );
     setProducts([...resp.data.products]);
   };
