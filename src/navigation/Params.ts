@@ -6,6 +6,7 @@ export type Params = {
   push: any;
   [PageName.HomeScreen]: undefined;
   [PageName.ProfileScreen]: undefined;
+  [PageName.ScannerScreen]: undefined;
 };
 
 // Add Params to React Navigation namespace to be able to get it from anywhere

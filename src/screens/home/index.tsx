@@ -1,9 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
 import { ProductContext } from '../../context/ProductContext';
+import type { StackScreenProps } from '@react-navigation/stack';
+import type { Params } from '../../navigation/Params';
+import { PageName } from '../../navigation/PageName';
 import { styles } from './styles';
 
-export const HomeScreen = () => {
+interface Props extends StackScreenProps<Params, PageName.HomeScreen> {}
+
+export const HomeScreen = ({ navigation }: Props) => {
   const { products, loadProducts } = useContext(ProductContext);
 
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -23,7 +28,7 @@ export const HomeScreen = () => {
           renderItem={({ item }) => (
             <TouchableOpacity
               activeOpacity={0.4}
-              onPress={() => console.log({ item: item.product_name })}>
+              onPress={() => navigation.navigate(PageName.ScannerScreen)}>
               <Text style={styles.productName}>{item.product_name}</Text>
             </TouchableOpacity>
           )}
