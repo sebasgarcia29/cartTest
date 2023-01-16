@@ -9,9 +9,11 @@ export const ScannerScreen = () => {
   const [hasPermission, setHasPermission] = useState(false);
   const devices = useCameraDevices();
   const device = devices.back;
-  const [frameProcessor, barcodes] = useScanBarcodes([BarcodeFormat.QR_CODE], {
+  const [frameProcessor, barcodes] = useScanBarcodes([BarcodeFormat.ALL_FORMATS], {
     checkInverted: true,
   });
+
+  console.log({ barcodes: barcodes[0]?.rawValue });
 
   const grandPermisison = async () => {
     try {
