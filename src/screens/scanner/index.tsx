@@ -1,33 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState, useContext } from 'react';
 import { StyleSheet, Text } from 'react-native';
 
 import { useCameraDevices } from 'react-native-vision-camera';
 import { Camera } from 'react-native-vision-camera';
 import { useScanBarcodes, BarcodeFormat } from 'vision-camera-code-scanner';
+import { ProductContext } from '../../context/ProductContext';
 
 export const ScannerScreen = () => {
-  const [hasPermission, setHasPermission] = useState(false);
   const devices = useCameraDevices();
+  const navigaion = useNavigation();
   const device = devices.back;
   const [frameProcessor, barcodes] = useScanBarcodes([BarcodeFormat.ALL_FORMATS], {
     checkInverted: true,
   });
 
-  console.log({ barcodes: barcodes[0]?.rawValue });
+  const [hasPermission, setHasPermission] = useState(false);
 
-  const grandPermisison = async () => {
-    try {
-      const status = await Camera.requestCameraPermission();
-      console.log('You can use the camera');
-      setHasPermission(status === 'authorized');
-    } catch (e) {
-      console.log('Camera permission denied', e);
-    }
-  };
+  const { setProductsWithScam } = useContext(ProductContext);
 
   useEffect(() => {
     grandPermisison();
   }, []);
+
+  useEffect(() => {
+    if (barcodes[0]?.rawValue) {
+      setProductsWithScam({
+        code: barcodes[0].rawValue,
+        product_name: barcodes[0].displayValue,
+      });
+      navigaion.goBack();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [barcodes]);
+
+  const grandPermisison = async () => {
+    try {
+      const status = await Camera.requestCameraPermission();
+      setHasPermission(status === 'authorized');
+    } catch (e) {
+      console.log('error', e);
+    }
+  };
 
   return (
     device != null &&

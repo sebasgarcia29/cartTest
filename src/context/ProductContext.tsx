@@ -6,6 +6,7 @@ import clientAPI from '../client/client';
 type ProductsContextProps = {
   products: Producto[];
   loadProducts: () => Promise<void>;
+  setProductsWithScam: (product: Producto) => void;
 };
 
 export const ProductContext = createContext({} as ProductsContextProps);
@@ -19,10 +20,14 @@ export const ProductProvider = ({ children }: any) => {
 
   const loadProducts = async () => {
     const resp = await clientAPI.get<ProductsResponse>(
-      '/api/search?categories_tags_en=chocolates&labels_tags_en=organic,fair%20trade&fields=code,product_name'
-      // '/api/v2/search?categories_tags_en=chocolates&labels_tags_en=organic,fair%20trade&fields=code,product_name'
+      '/api/v2/search?categories_tags_en=chocolates&labels_tags_en=organic,fair%20trade&fields=code,product_name'
     );
     setProducts([...resp.data.products]);
+  };
+
+  const setProductsWithScam = (product: Producto) => {
+    if (products.find((p) => p.code === product.code)) return;
+    setProducts([...products, product]);
   };
 
   return (
@@ -30,6 +35,7 @@ export const ProductProvider = ({ children }: any) => {
       value={{
         products,
         loadProducts,
+        setProductsWithScam,
       }}>
       {children}
     </ProductContext.Provider>

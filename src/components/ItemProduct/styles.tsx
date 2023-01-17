@@ -2,9 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginHorizontal: 10,
-    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   title: {
     color: 'black',
@@ -21,8 +20,16 @@ export const styles = StyleSheet.create({
     borderBottomColor: 'rgba(0,0,0,0.2)',
   },
   containerIcon: {
-    width: '50%',
-    alignSelf: 'center',
+    backgroundColor: '#3b5998',
+    width: 50,
+    height: 50,
+    borderRadius: 50,
     alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 20,
+  },
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
