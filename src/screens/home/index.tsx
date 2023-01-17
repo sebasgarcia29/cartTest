@@ -3,28 +3,32 @@ import React, { useContext, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
 import type { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { ItemProduct } from '../../components/ItemProduct/ItemProduct';
 import { ProductContext } from '../../context/ProductContext';
 import type { Params } from '../../navigation/Params';
 import { PageName } from '../../navigation/PageName';
 import { styles } from './styles';
 
-interface Props extends StackScreenProps<Params, PageName.HomeScreen> { }
+interface Props extends StackScreenProps<Params, PageName.HomeScreen> {}
 
 export const HomeScreen = ({ navigation }: Props) => {
-  const { products, loadProducts } = useContext(ProductContext);
+  const {
+    products,
+    // loadProducts
+  } = useContext(ProductContext);
 
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const loadProductsFromBackend = async () => {
     setIsRefreshing(true);
-    await loadProducts();
+    // await loadProducts();
     setIsRefreshing(false);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <View style={{ width: '50%', alignSelf: 'center', alignItems: 'center' }}>
+        <View style={styles.containerIcon}>
           <Icon.Button
             name="barcode"
             backgroundColor="#3b5998"
@@ -36,13 +40,7 @@ export const HomeScreen = ({ navigation }: Props) => {
         <FlatList
           data={products}
           keyExtractor={(item) => item.code}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              activeOpacity={0.4}
-              onPress={() => navigation.navigate(PageName.ScannerScreen)}>
-              <Text style={styles.productName}>{item.product_name}</Text>
-            </TouchableOpacity>
-          )}
+          renderItem={ItemProduct}
           ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
           refreshControl={
             <RefreshControl
