@@ -4,9 +4,11 @@ export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-around',
+    alignContent: 'center',
   },
   cartButton: {
-    backgroundColor: '#7c9ff7',
+    backgroundColor: '#3b5998',
     borderBottomColor: 'black',
     borderWidth: 0.5,
     padding: 5,
@@ -29,7 +31,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
   },
   quantityFont: {
-    fontSize: 15,
+    fontSize: 25,
     justifyContent: 'center',
     borderBottomColor: 'black',
     borderWidth: 0.5,

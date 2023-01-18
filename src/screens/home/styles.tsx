@@ -7,8 +7,8 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   title: {
-    color: 'black',
-    fontSize: 30,
+    color: 'white',
+    fontSize: 25,
     fontWeight: 'bold',
     marginTop: 20,
   },
@@ -21,8 +21,21 @@ export const styles = StyleSheet.create({
     borderBottomColor: 'rgba(0,0,0,0.2)',
   },
   containerIcon: {
-    width: '50%',
+    width: '70%',
     alignSelf: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#3b5998',
+    borderRadius: 50,
+    shadowColor: '"#000',
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.41,
+    shadowRadius: 9.11,
+    elevation: 14,
+    marginBottom: 50,
   },
 });
