@@ -5933,6 +5933,11 @@ react-native-gradle-plugin@^0.70.3:
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.70.3.tgz#cbcf0619cbfbddaa9128701aa2d7b4145f9c4fc8"
   integrity sha512-oOanj84fJEXUg9FoEAQomA8ISG+DVIrTZ3qF7m69VQUJyOGYyDZmPqKcjvRku4KXlEH6hWO9i4ACLzNBh8gC0A==
 
+react-native-hole-view@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-hole-view/-/react-native-hole-view-2.1.2.tgz#62016925a0adcbcc64d9b5c9d88752dfa432bda9"
+  integrity sha512-G6Gwqq6J8FjVO6qwA3qZ12u5fXEtudVpDsZqML4QeiP0A0vmZ+FHoMJTLcrLaLUqHVQThrercIhn967wybrd3w==
+
 react-native-image-picker@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-5.0.0.tgz#c3ad339c4df4c514b296dd9030e882f8b924ccdc"

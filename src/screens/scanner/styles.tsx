@@ -10,4 +10,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'rgba(0,0,0,0.5)',
   },
+  barcodeTextURL: {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+  },
 });
