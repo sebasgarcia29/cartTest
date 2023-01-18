@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { View, FlatList, RefreshControl } from 'react-native';
 import type { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { ItemProduct } from '../../components/ItemProduct/ItemProduct';
+import { ItemProduct } from '../../components/ItemProduct';
 import { ProductContext } from '../../context/ProductContext';
 import type { Params } from '../../navigation/Params';
 import { PageName } from '../../navigation/PageName';
