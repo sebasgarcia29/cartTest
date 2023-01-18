@@ -3,6 +3,7 @@ import { Image, Text, View } from 'react-native';
 import { styles } from './styles';
 import type { Producto } from '../../interfaces/productsInterface2';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props {
   item: Producto;
@@ -29,7 +30,7 @@ export const ItemProduct = (props: Props) => {
       <View style={styles.quantityContainer}>
         <TouchableOpacity onPress={() => substractQtyProduct(item)}>
           <View style={[styles.cartButton, styles.leftCorners]}>
-            <Text> - </Text>
+            <Icon name="remove-outline" color={'white'} size={20} />
           </View>
         </TouchableOpacity>
         <View style={styles.quantityFont}>
@@ -37,7 +38,7 @@ export const ItemProduct = (props: Props) => {
         </View>
         <TouchableOpacity onPress={() => addQtyProduct(item)}>
           <View style={[styles.cartButton, styles.rightCorners]}>
-            <Text> + </Text>
+            <Icon name="add-outline" color={'white'} size={20} />
           </View>
         </TouchableOpacity>
       </View>
