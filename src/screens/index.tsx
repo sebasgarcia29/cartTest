@@ -1,3 +1,3 @@
 export { HomeScreen } from './home';
 export { ProfileScreen } from './profile';
-export { ScannerScreen } from './scanner/ScannerCamera';
+export { ScannerScreen } from './scanner';

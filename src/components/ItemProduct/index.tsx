@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Image, Text, View } from 'react-native';
 import { styles } from './styles';
@@ -15,7 +14,7 @@ export const ItemProduct = (props: Props) => {
   const { item, addQtyProduct, substractQtyProduct } = props;
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} key={item.code}>
       <View style={styles.containerIcon}>
         <Image
           style={styles.productImage}
