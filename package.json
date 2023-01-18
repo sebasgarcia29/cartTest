@@ -24,7 +24,8 @@
     "react-native-screens": "^3.18.2",
     "react-native-vector-icons": "^9.2.0",
     "react-native-vision-camera": "^2.15.2",
-    "vision-camera-code-scanner": "^0.2.0"
+    "vision-camera-code-scanner": "^0.2.0",
+    "react-native-hole-view": "^2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

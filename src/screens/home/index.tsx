@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
+import { View, FlatList, RefreshControl } from 'react-native';
 import type { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ItemProduct } from '../../components/ItemProduct/ItemProduct';
@@ -12,16 +12,12 @@ import { styles } from './styles';
 interface Props extends StackScreenProps<Params, PageName.HomeScreen> {}
 
 export const HomeScreen = ({ navigation }: Props) => {
-  const {
-    products,
-    // loadProducts
-  } = useContext(ProductContext);
+  const { products, addQtyProduct, substractQtyProduct } = useContext(ProductContext);
 
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const loadProductsFromBackend = async () => {
     setIsRefreshing(true);
-    // await loadProducts();
     setIsRefreshing(false);
   };
 
@@ -40,7 +36,13 @@ export const HomeScreen = ({ navigation }: Props) => {
         <FlatList
           data={products}
           keyExtractor={(item) => item.code}
-          renderItem={ItemProduct}
+          renderItem={({ item }) => (
+            <ItemProduct
+              addQtyProduct={addQtyProduct}
+              substractQtyProduct={substractQtyProduct}
+              item={item}
+            />
+          )}
           ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
           refreshControl={
             <RefreshControl

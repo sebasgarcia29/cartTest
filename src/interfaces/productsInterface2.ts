@@ -13,5 +13,5 @@ export interface Producto {
   code: string;
   product_name?: string;
   image?: string;
-  amount?: number;
+  qty: number;
 }
