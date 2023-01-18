@@ -30,7 +30,7 @@ export const ItemProduct = (props: Props) => {
       <View style={styles.quantityContainer}>
         <TouchableOpacity onPress={() => substractQtyProduct(item)}>
           <View style={[styles.cartButton, styles.leftCorners]}>
-            <Icon name="remove-outline" color={'white'} size={20} />
+            <Icon name="close-circle-outline" color={'white'} size={20} />
           </View>
         </TouchableOpacity>
         <View style={styles.quantityFont}>
@@ -38,7 +38,7 @@ export const ItemProduct = (props: Props) => {
         </View>
         <TouchableOpacity onPress={() => addQtyProduct(item)}>
           <View style={[styles.cartButton, styles.rightCorners]}>
-            <Icon name="add-outline" color={'white'} size={20} />
+            <Icon name="add-circle-outline" color={'white'} size={20} />
           </View>
         </TouchableOpacity>
       </View>

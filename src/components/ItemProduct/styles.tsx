@@ -8,18 +8,19 @@ export const styles = StyleSheet.create({
     alignContent: 'center',
   },
   cartButton: {
-    backgroundColor: '#3b5998',
     borderBottomColor: 'black',
     borderWidth: 0.5,
     padding: 5,
   },
-  rightCorners: {
-    borderTopRightRadius: 8,
-    borderBottomRightRadius: 8,
-  },
   leftCorners: {
     borderTopLeftRadius: 8,
     borderBottomLeftRadius: 8,
+    backgroundColor: '#FF4B3E',
+  },
+  rightCorners: {
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
+    backgroundColor: '#6CC431',
   },
   title: {
     color: 'black',
