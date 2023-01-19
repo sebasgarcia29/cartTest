@@ -10,7 +10,7 @@ import { PageName } from '../../navigation/PageName';
 import { styles } from './styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-interface Props extends StackScreenProps<Params, PageName.HomeScreen> { }
+interface Props extends StackScreenProps<Params, PageName.HomeScreen> {}
 
 export const HomeScreen = ({ navigation }: Props) => {
   const { products, addQtyProduct, substractQtyProduct } = useContext(ProductContext);

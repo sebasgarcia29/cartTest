@@ -1,26 +1,26 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
 import { useCameraDevices, Camera } from 'react-native-vision-camera';
 import { useScanBarcodes, BarcodeFormat } from 'vision-camera-code-scanner';
 import { RNHoleView } from 'react-native-hole-view';
 
 import { ProductContext } from '../../context/ProductContext';
 import { styles } from './styles';
-import { PageName } from '../../navigation/PageName';
+import { ModalConfirm } from '../../components/modalConfirm';
 
 export const ScannerScreen = () => {
-  const { loadProducts } = useContext(ProductContext);
+  const { loadProducts, products } = useContext(ProductContext);
 
   const devices = useCameraDevices();
-  const navigaion = useNavigation();
   const device = devices.back;
   const [frameProcessor, barcodes] = useScanBarcodes([BarcodeFormat.ALL_FORMATS], {
     checkInverted: true,
   });
 
   const [hasPermission, setHasPermission] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [isCameraActive, setIsCameraActive] = useState(true);
 
   useEffect(() => {
     grandPermisison();
@@ -28,12 +28,18 @@ export const ScannerScreen = () => {
 
   const getProduct = async (code: string) => {
     await loadProducts(code);
+    setIsCameraActive(false);
+    setModalVisible(true);
+  };
+
+  const handleScan = () => {
+    setIsCameraActive(true);
+    setModalVisible(false);
   };
 
   useEffect(() => {
     if (barcodes[0]?.rawValue) {
       getProduct(barcodes[0]?.rawValue);
-      navigaion.navigate(PageName.HomeScreen);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [barcodes]);
@@ -52,7 +58,7 @@ export const ScannerScreen = () => {
       <Camera
         style={StyleSheet.absoluteFill}
         device={device}
-        isActive={true}
+        isActive={isCameraActive}
         frameProcessor={frameProcessor}
         frameProcessorFps={5}
       />
@@ -72,6 +78,13 @@ export const ScannerScreen = () => {
           },
         ]}
       />
+      {modalVisible && (
+        <ModalConfirm
+          product={products[0]}
+          modalVisible={modalVisible}
+          handleScan={handleScan}
+        />
+      )}
     </>
   ) : (
     <View />

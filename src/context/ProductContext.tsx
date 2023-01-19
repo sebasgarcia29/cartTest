@@ -6,6 +6,7 @@ import type { Producto } from '../interfaces/productsInterface2';
 
 type ProductsContextProps = {
   products: Producto[];
+  scanProduct: Producto;
   loadProducts: (code: string) => Promise<void>;
   setProductsWithScam: (product: Producto) => void;
   addQtyProduct: (product: Producto) => void;
@@ -16,6 +17,7 @@ export const ProductContext = createContext({} as ProductsContextProps);
 
 export const ProductProvider = ({ children }: any) => {
   const [products, setProducts] = useState<Producto[]>([]);
+  const [scanProduct, setScanProduct] = useState<Producto>();
 
   const loadProducts = async (code: string) => {
     const resp = await clientAPI.get<Product>(
@@ -28,7 +30,7 @@ export const ProductProvider = ({ children }: any) => {
       qty: 1,
     };
 
-    setProducts([...products, product]);
+    setScanProduct(product);
   };
 
   const setProductsWithScam = (product: Producto) => {
@@ -75,6 +77,7 @@ export const ProductProvider = ({ children }: any) => {
     <ProductContext.Provider
       value={{
         products,
+        scanProduct,
         loadProducts,
         setProductsWithScam,
         addQtyProduct,
